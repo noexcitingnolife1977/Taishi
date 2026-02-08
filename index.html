@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>超音波診断装置 採算チェッカー</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <p class="app__eyebrow">スマホで完結</p>
+        <h1>超音波診断装置 採算チェッカー</h1>
+        <p class="app__subtitle">
+          初期投資・月間コスト・検査単価を入力して、損益分岐点と月次利益を即確認できます。
+        </p>
+      </header>
+
+      <section class="card">
+        <h2>入力</h2>
+        <form id="calc-form" class="form" autocomplete="off">
+          <label class="field">
+            <span>装置購入価格（円）</span>
+            <input type="number" min="0" step="10000" name="deviceCost" value="25000000" />
+          </label>
+          <label class="field">
+            <span>設置・初期費用（円）</span>
+            <input type="number" min="0" step="10000" name="setupCost" value="1500000" />
+          </label>
+          <label class="field">
+            <span>月間保守費（円）</span>
+            <input type="number" min="0" step="1000" name="maintenance" value="180000" />
+          </label>
+          <label class="field">
+            <span>検査1件あたり変動費（円）</span>
+            <input type="number" min="0" step="100" name="variableCost" value="1200" />
+          </label>
+          <label class="field">
+            <span>検査単価（円）</span>
+            <input type="number" min="0" step="100" name="price" value="9000" />
+          </label>
+          <label class="field">
+            <span>月間検査件数（件）</span>
+            <input type="number" min="0" step="1" name="volume" value="320" />
+          </label>
+          <label class="field">
+            <span>回収期間の目安（月）</span>
+            <input type="number" min="1" step="1" name="months" value="36" />
+          </label>
+        </form>
+      </section>
+
+      <section class="card results" aria-live="polite">
+        <h2>結果</h2>
+        <div class="result-grid">
+          <div class="result">
+            <span class="result__label">初期投資合計</span>
+            <span class="result__value" id="initialTotal">-</span>
+          </div>
+          <div class="result">
+            <span class="result__label">月次利益（目安）</span>
+            <span class="result__value" id="monthlyProfit">-</span>
+          </div>
+          <div class="result">
+            <span class="result__label">損益分岐点までの月数</span>
+            <span class="result__value" id="breakEven">-</span>
+          </div>
+          <div class="result">
+            <span class="result__label">回収期間内の累計利益</span>
+            <span class="result__value" id="periodProfit">-</span>
+          </div>
+        </div>
+        <p class="result-note" id="resultNote"></p>
+      </section>
+
+      <section class="card tips">
+        <h2>収益改善のヒント</h2>
+        <ul>
+          <li>予約枠の平準化で稼働率を安定させる。</li>
+          <li>検査単価と追加オプションの設計を見直す。</li>
+          <li>保守契約の内容を比較し、固定費を抑える。</li>
+          <li>院内連携・健診連携で月間件数を底上げする。</li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <p>※ 試算結果は参考値です。実際の運用条件に合わせて調整してください。</p>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>
